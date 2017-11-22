@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Model {
 
-    public void setData(MvpModel.OnCompleteListener listener){
+    public void setData(IModel.OnCompleteListener listener){
 
         List<Person> list=new ArrayList<Person>();
         for (int i = 0; i < 5; i++) {

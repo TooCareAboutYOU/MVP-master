@@ -1,9 +1,9 @@
 package com.mymvp.main.hellomvp.presenter;
 
 import com.mymvp.main.hellomvp.model.Model;
-import com.mymvp.main.hellomvp.model.MvpModel;
+import com.mymvp.main.hellomvp.model.IModel;
 import com.mymvp.main.hellomvp.bean.Person;
-import com.mymvp.main.hellomvp.view.MvpView;
+import com.mymvp.main.hellomvp.view.IView;
 
 import java.util.List;
 
@@ -14,18 +14,18 @@ import java.util.List;
 public class Presenter {
 
     private Model model;
-    private MvpView mvpView;
+    private IView mIView;
 
-    public Presenter(MvpView mvpView) {
+    public Presenter(IView iView) {
         this.model = new Model();
-        this.mvpView = mvpView;
+        this.mIView = iView;
     }
 
     public void load(){
-        model.setData(new MvpModel.OnCompleteListener() {
+        model.setData(new IModel.OnCompleteListener() {
             @Override
             public void onLoad(List<Person> list) {
-                mvpView.showView(list);
+                mIView.showView(list);
             }
         });
     }

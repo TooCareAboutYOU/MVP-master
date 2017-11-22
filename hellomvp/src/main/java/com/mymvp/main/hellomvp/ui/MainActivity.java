@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.mymvp.main.hellomvp.R;
 import com.mymvp.main.hellomvp.bean.Person;
 import com.mymvp.main.hellomvp.presenter.Presenter;
-import com.mymvp.main.hellomvp.view.MvpView;
+import com.mymvp.main.hellomvp.view.IView;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final TextView tv= (TextView) findViewById(R.id.tv_demo);
-        new Presenter(new MvpView() {
+        new Presenter(new IView() {
             @Override
             public void showView(List<Person> list) {
                 tv.setText(list.toString());
