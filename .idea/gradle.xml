@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/hellomvp" />
             <option value="$PROJECT_DIR$/mvpdemo" />
+            <option value="$PROJECT_DIR$/retrofitokhttp" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

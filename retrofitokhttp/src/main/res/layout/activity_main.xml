@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/btn_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重置"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:weightSum="2">
+
+    <Button
+        android:id="@+id/btn_retrofit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Retrofit OkHttp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimaryDark"/>
+        />
+
+    <Button
+        android:id="@+id/btn_xuitls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="xUtils3"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"/>/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:weightSum="2">
+        <TextView
+            android:id="@+id/tv_timer_retrofit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:background="@color/colorPrimaryDark"
+            android:text="0"/>
+
+        <TextView
+            android:id="@+id/tv_timer_okhttp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:background="@color/colorPrimaryDark"
+            android:text="0"/>
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/tv_retrofit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:text="null"
+                android:background="@color/colorPrimaryDark"/>
+            <TextView
+                android:id="@+id/tv_okhttp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:text="null"
+                android:background="@color/colorAccent"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
