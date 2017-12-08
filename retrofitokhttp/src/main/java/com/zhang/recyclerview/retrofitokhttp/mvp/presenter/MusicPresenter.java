@@ -1,13 +1,11 @@
 package com.zhang.recyclerview.retrofitokhttp.mvp.presenter;
 
 import android.os.Handler;
-
 import com.zhang.recyclerview.retrofitokhttp.bean.MusicBean;
 import com.zhang.recyclerview.retrofitokhttp.mvp.callback.MusicCallBack;
 import com.zhang.recyclerview.retrofitokhttp.mvp.listener.OnMusicListener;
 import com.zhang.recyclerview.retrofitokhttp.mvp.view.IMusicView;
 import com.zhang.recyclerview.retrofitokhttp.ui.MainActivity;
-
 import retrofit.RetrofitError;
 
 /**

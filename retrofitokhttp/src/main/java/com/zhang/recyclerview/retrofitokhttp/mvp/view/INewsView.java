@@ -5,7 +5,7 @@ package com.zhang.recyclerview.retrofitokhttp.mvp.view;
  */
 
 public interface INewsView {
-    public interface onNewsViewListener<T>{
+    interface onNewsViewListener<T>{
         void onLoading(boolean load);
         void onNewsSuccess(T bean);
         void onNewsFailed(Throwable ex);

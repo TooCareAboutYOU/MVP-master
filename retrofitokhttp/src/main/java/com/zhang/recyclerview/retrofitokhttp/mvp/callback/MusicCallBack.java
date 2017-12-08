@@ -17,6 +17,7 @@ import retrofit.client.Response;
 public class MusicCallBack implements IMusicModel {
     @Override
     public void onMusicData(final String cid, final OnMusicListener listener) {
+        //野线程
         new Thread(new Runnable() {
             @Override
             public void run() {

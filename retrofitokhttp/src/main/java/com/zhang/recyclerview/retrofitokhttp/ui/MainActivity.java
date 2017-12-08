@@ -70,7 +70,8 @@ public class MainActivity extends Activity implements IMusicView{
             }
         });
 
-        final String uri="http://app.mijia.cnlive.com/api_v1/columnprograms.do?cid=ylsd&type=new";
+        //   http://app.mijia.cnlive.com/api_v1/columnprograms.do?cid=ylsd&type=new
+        final String uri="http://app.mijia.cnlive.com/api_v1/columnprograms.do?cid=hdedu";
         findViewById(R.id.btn_xuitls).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

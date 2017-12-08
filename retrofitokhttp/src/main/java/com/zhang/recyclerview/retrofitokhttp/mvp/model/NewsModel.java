@@ -3,29 +3,23 @@ package com.zhang.recyclerview.retrofitokhttp.mvp.model;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
-
 import com.google.gson.Gson;
-
 import org.xutils.http.RequestParams;
 import org.xutils.x;
-
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by zs on 2017/11/23.
- */
-
 public class NewsModel<T> {
 
     public NewsModel(Activity activity){ x.view().inject(activity); }
 
+    public <T> void onData(final String uri, final Class<T> t, final INewsModel.OnCompleteListenener<T> listener){
 
-
-    public void onData(final String uri, final Class<T> t, final INewsModel.OnCompleteListenener<T> listener){
+        //野线程
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
@@ -52,11 +46,10 @@ public class NewsModel<T> {
 //            }
 //        }).start();
 
-
         //创建一个缓存线程池，如果线程池的长度超过处理的需要，可灵活回收空闲线程，若无可回收，则新建线程
         //线程池尾无限大，当执行第二个任务时第一个任务已经完成，回复用第一个任务的线程，而不用新建线程
-        ExecutorService cacheThreadPool=Executors.newCachedThreadPool();
-        getData(uri, t, listener, cacheThreadPool);
+//        ExecutorService cacheThreadPool=Executors.newCachedThreadPool();
+//        getData(uri, t, listener, cacheThreadPool);
 
 
         //定长线程池，可控制线程池的最大并发数，超出的线程会在队列中等待
@@ -70,11 +63,13 @@ public class NewsModel<T> {
 //        getData(uri, t, listener, scheduledThreadPool);
 
         //单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定的顺序(FIFO,LIFO,优先级)执行
-//        ExecutorService singleThreadExecutor= Executors.newSingleThreadExecutor();
-//        getData(uri, t, listener, singleThreadExecutor);
+        ExecutorService singleThreadExecutor= Executors.newSingleThreadExecutor();
+        getData(uri, t, listener, singleThreadExecutor);
+
+
 }
 
-    private void getData(final String uri, final Class<T> t, final INewsModel.OnCompleteListenener<T> listener, ExecutorService executor) {
+    private <T> void getData(final String uri, final Class<T> tClass, final INewsModel.OnCompleteListenener<T> listener, final ExecutorService executor) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -83,8 +78,9 @@ public class NewsModel<T> {
                     @Override
                     public void onSuccess(String result) {
                         Gson gson = new Gson();
-                        T bean = gson.fromJson(result, t);
+                        T bean = gson.fromJson(result, tClass);
                         listener.onNewsSuccess(bean);
+
                     }
 
                     @Override
@@ -96,7 +92,10 @@ public class NewsModel<T> {
                     public void onCancelled(CancelledException cex) {}
 
                     @Override
-                    public void onFinished() {}
+                    public void onFinished() {
+                        //关闭线程池
+                        executor.shutdown();
+                    }
                 });
             }
         });

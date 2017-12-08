@@ -6,24 +6,25 @@ import com.zhang.recyclerview.retrofitokhttp.mvp.model.INewsModel;
 import com.zhang.recyclerview.retrofitokhttp.mvp.model.NewsModel;
 import com.zhang.recyclerview.retrofitokhttp.mvp.view.INewsView;
 
-/**
- * Created by zs on 2017/11/23.
- */
+import java.lang.reflect.ParameterizedType;
+
 
 public class NewsPresenter<T> {
     private NewsModel mModel;
     private INewsView.onNewsViewListener mView;
     private Handler mHandler=new Handler();
-//    private Class<T> mTClass=null;
+//    private Class<T> mtClass=null;
+//    private T mT=null;
 
-    public NewsPresenter(Activity activity,INewsView.onNewsViewListener<T> view) {
+
+    public <T> NewsPresenter(Activity activity,INewsView.onNewsViewListener<T> view) {
         mModel=new NewsModel(activity);
         mView = view;
     }
 
-    public void requestData(String uri,Class<T> mTClass){
+    public <T> void requestData(String uri,Class<T> mtClass){ // ,Class<T> mTClass
         mView.onLoading(true);
-        mModel.onData(uri,mTClass, new INewsModel.OnCompleteListenener<T>() {
+        mModel.onData(uri,mtClass, new INewsModel.OnCompleteListenener<T>() {
             @Override
             public void onNewsSuccess(final T bean) {
                 mHandler.post(new Runnable() {
