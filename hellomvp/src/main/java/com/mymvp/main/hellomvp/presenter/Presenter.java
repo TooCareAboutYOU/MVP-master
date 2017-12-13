@@ -29,4 +29,8 @@ public class Presenter {
             }
         });
     }
+
+    public void detachView(){
+        this.mIView=null;
+    }
 }

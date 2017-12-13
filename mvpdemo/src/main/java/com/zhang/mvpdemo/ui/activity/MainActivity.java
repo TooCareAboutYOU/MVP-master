@@ -15,7 +15,8 @@ import com.zhang.mvpdemo.mvp.view.ILoginView;
 
 public class MainActivity extends AppCompatActivity implements ILoginView {
 
-    EditText etpwd, etaccout;
+    private Button btnlogin;
+    private EditText etpwd, etaccout;
     private ProgressBar mProgressBar;
     private LoginPresenter mPresenter;
 
@@ -25,27 +26,21 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
         setContentView(R.layout.activity_main);
 
         mPresenter = new LoginPresenter(this);
-
-    }
-
-    @Override
-    public void onContentChanged() {
-        super.onContentChanged();
-        Button btnlogin = (Button) findViewById(R.id.btn_login);
-        etpwd = (EditText) findViewById(R.id.et_pwd);
-        etaccout = (EditText) findViewById(R.id.et_accout);
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-
-        mPresenter = new LoginPresenter(this);
-
-
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mPresenter.login();
             }
         });
+    }
+
+    @Override
+    public void onContentChanged() {
+        super.onContentChanged();
+        btnlogin = (Button) findViewById(R.id.btn_login);
+        etpwd = (EditText) findViewById(R.id.et_pwd);
+        etaccout = (EditText) findViewById(R.id.et_accout);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
     @Override

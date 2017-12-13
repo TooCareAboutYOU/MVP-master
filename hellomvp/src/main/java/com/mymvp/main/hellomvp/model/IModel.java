@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IModel {
 
-    public interface OnCompleteListener{
+    interface OnCompleteListener{
         void onLoad(List<Person> list);
     }
 }
